@@ -1,0 +1,37 @@
+#!/usr/bin/python3
+
+import os
+import readline
+import sys
+
+def input_with_prefill(prompt, text):
+        def hook():
+            readline.insert_text(text)
+            readline.redisplay()
+        readline.set_pre_input_hook(hook)
+
+        if sys.version_info >= (3,):
+            result = input(prompt)
+        else:
+            result = raw_input(prompt)
+
+        readline.set_pre_input_hook()
+        return result
+
+if len(sys.argv) == 1:
+    raise ValueError("usage ren <FILENAME>")
+
+source = sys.argv[1]
+if source == "":
+    raise ValueError("empty filename")
+if not os.path.exists(source):
+    raise ValueError(source, " file does not exists")
+
+out = input_with_prefill('new name: ', source)
+print(f"rename to:[{out}]")
+ok = input("rename ? y/n[Y]: ") or "Y"
+
+if ok == "Y":
+    os.rename(source, out)
+else:
+    print("canceled")
