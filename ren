@@ -28,9 +28,15 @@ if not os.path.exists(source):
     raise ValueError(source, " file does not exists")
 
 out = input_with_prefill('new name: ', source)
+
+if out == source:
+    print("same name, do mothing.")
+    sys.exit(0)
+
 if out == "":
     raise ValueError("out filename cannot be empty")
 
+print(f"rename from:[{source}]")
 print(f"rename to:[{out}]")
 ok = input("rename ? y/n[Y]: ") or "Y"
 
