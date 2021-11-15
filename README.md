@@ -2,7 +2,10 @@
 
 # description
 
-interactive file renamer with prefilled named
+This tool is the answer to "How to rename a file interactively in Linux / command line ?"
+
+interactive file renamer with prefilled named.
+
 handy in shells Unixes, Mac even WSl for windows
 
 
